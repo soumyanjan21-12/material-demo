@@ -1,2 +1,6 @@
+@if (isLoding$|async) {
+<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
+
 <app-nav-bar></app-nav-bar>
-<app-circles></app-circles>
+<router-outlet></router-outlet>

@@ -1,0 +1,33 @@
+<!-- @for(user of users$| async; track user.id){
+<div class="container">
+  <div>{{ user.firstName }} {{ user.lastName }}</div>
+  <div>{{ user.id }}</div>
+  <div><button [routerLink]="['/user', user.id]">Take To User</button></div>
+</div>
+
+} -->
+
+<p>
+  Table is just a mapping of objects to table rows with <code>&#64;for</code>
+</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Full Name</th>
+
+      <th scope="col">Go To</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of users$| async; track user.id) {
+    <tr>
+      <td>{{ user.id }}</td>
+      <td>{{ user.firstName }} {{ user.lastName }}</td>
+
+      <td><button [routerLink]="['/user', user.id]">Take To User</button></td>
+    </tr>
+    }
+  </tbody>
+</table>

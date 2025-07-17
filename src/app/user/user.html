@@ -1,4 +1,5 @@
-<div>
-  <div>{{ (user$ | async).firstName }} {{ (user$ | async).lastName }}</div>
-  <div>{{ (user$ | async).id }}</div>
-</div>
+<app-content
+  [img]="(user$ | async).image"
+  [firstName]="(user$ | async).firstName"
+  [lastName]="(user$ | async).lastName"
+></app-content>

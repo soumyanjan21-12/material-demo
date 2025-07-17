@@ -1,22 +1,45 @@
-<!-- @for(user of users$| async; track user.id){
-<div class="container">
-  <div>{{ user.firstName }} {{ user.lastName }}</div>
-  <div>{{ user.id }}</div>
-  <div><button [routerLink]="['/user', user.id]">Take To User</button></div>
-</div>
+<table mat-table [dataSource]="users$ | async" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
 
-} -->
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
 
-<p>
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.firstName }} {{ element.lastName }}
+    </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="go to">
+    <th mat-header-cell *matHeaderCellDef>Go To</th>
+    <td mat-cell *matCellDef="let element">
+      <button matButton="outlined" [routerLink]="['/user', element.id]">
+        Take To User
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<!-- <p>
   Table is just a mapping of objects to table rows with <code>&#64;for</code>
 </p>
-
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Full Name</th>
-
       <th scope="col">Go To</th>
     </tr>
   </thead>
@@ -30,4 +53,4 @@
     </tr>
     }
   </tbody>
-</table>
+</table> -->
